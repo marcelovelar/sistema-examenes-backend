@@ -14,14 +14,17 @@ import java.util.Set;
 //Que es una API REST?
 @RestController
 @RequestMapping("/usuarios")
+@CrossOrigin("*")
 public class UsuarioController {
+
+
 
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping("/")
-                                //Esta notacion nos va a servir para poder mandar este objeto
+    @PostMapping("/")               //Esta notacion nos va a servir para poder mandar este objeto
     public Usuario guardarUsuario(@RequestBody Usuario usuario) throws Exception{
+        usuario.setPerfil("default.png");
         Set<UsuarioRol> roles = new HashSet<>();
 
         Rol rol = new Rol();
